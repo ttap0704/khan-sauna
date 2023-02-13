@@ -1,0 +1,168 @@
+@import "./mui.scss";
+@import "./mixin.scss";
+@font-face {
+  font-family: NanumSquareRound;
+  src: url("../fonts/NanumSquareRoundB.ttf") format("ttf");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: NanumSquareRound;
+  src: url("../fonts/NanumSquareRoundEB.ttf") format("ttf");
+  font-style: normal;
+  font-weight: bold;
+}
+
+* {
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+  font-family: NanumSquareRound, sans-serif !important;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-user-drag: none;
+  background: #fff;
+  @include respond-below(sm) {
+    font-size: 12 + px !important;
+  }
+  @include respond-between(sm, md) {
+    font-size: 13 + px !important;
+  }
+  @include respond-between(md, lg) {
+    font-size: 14 + px !important;
+  }
+  @include respond-between(lg, xl) {
+    font-size: 15 + px !important;
+  }
+  @include respond-above(xl) {
+    font-size: 16 + px !important;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #fff;
+
+  ::-webkit-scrollbar-track {
+    display: none;
+    border-color: transparent;
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar * {
+    background: transparent;
+  }
+  ::-webkit-scrollbar {
+    width: rem(7);
+    min-width: rem(7);
+    height: rem(7);
+    min-height: rem(7);
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: rem(10);
+    background-color: #666;
+    -webkit-box-shadow: inset 0 0 0;
+  }
+}
+
+#__next {
+  width: 100%;
+  margin: 0 auto;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+/////////////////////////////////////////////////////
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+}
+
+h4 {
+  font-size: 1.05rem !important;
+  font-weight: bold !important;
+}
+
+h5 {
+  font-size: 1.025rem !important;
+  font-weight: bold !important;
+}
+input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input {
+  border-image: none;
+  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid;
+
+  &:focus-visible {
+    outline: 0;
+  }
+
+  &:read-only {
+    cursor: unset;
+  }
+}
+
+.rdrDefinedRangesWrapper {
+  display: none;
+}
+.rdrCalendarWrapper {
+  font-size: 1rem !important;
+}
+.rdrDayNumber {
+  & > span {
+    &::after {
+      background: #ff5349 !important;
+    }
+  }
+}
+.rdrMonthName {
+  display: none;
+}
