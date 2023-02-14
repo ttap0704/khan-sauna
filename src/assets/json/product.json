@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "product": "1인용",
+    "thumbnail": "1.jpeg",
+    "price": 1000,
+    "size": "W1200 * L2190 * H940 mm"
+  },
+  {
+    "id": 2,
+    "product": "2인용",
+    "thumbnail": "1.jpeg",
+    "price": 1000,
+    "size": "W1200 * L2190 * H940 mm"
+  },
+  {
+    "id": 3,
+    "product": "3인용",
+    "thumbnail": "1.jpeg",
+    "price": 1000,
+    "size": "W1200 * L2190 * H940 mm"
+  },
+  {
+    "id": 4,
+    "product": "4인용",
+    "thumbnail": "1.jpeg",
+    "price": 1000,
+    "size": "W1200 * L2190 * H940 mm"
+  }
+]

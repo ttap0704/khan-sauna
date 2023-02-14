@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 
-const path = require('path');
-
+const withImages = require('next-images');
 const nextConfig = {
   reactStrictMode: true,
   webpack(config) {
@@ -15,4 +14,4 @@ const nextConfig = {
   staticPageGenerationTimeout: 240,
 };
 
-module.exports = nextConfig;
+module.exports = withImages(nextConfig);
