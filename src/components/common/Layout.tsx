@@ -18,7 +18,7 @@ const LayoutHeader = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.brown.main,
 
   '.header': {
-    width: '100%',
+    width: 'calc(100% - 2rem)',
     maxWidth: '60rem',
     height: '100%',
     display: 'flex',
@@ -47,7 +47,7 @@ const LayoutHeader = styled(Box)(({ theme }) => ({
 }));
 
 const LayoutBody = styled(Box)(({ theme }) => ({
-  width: '100%',
+  width: 'calc(100% - 2rem)',
   maxWidth: '60rem',
   display: 'flex',
   flexDirection: 'column',
@@ -59,7 +59,7 @@ const LayoutFooter = styled(Box)(({ theme }) => ({
   width: '100%',
   backgroundColor: theme.palette.black.main,
   '& > div': {
-    width: '100%',
+    width: 'calc(100% - 2rem)',
     maxWidth: '60rem',
     margin: '0 auto',
     '.info': {

@@ -75,6 +75,14 @@ const ProductDetailInfo = styled(Box)(({ theme }) => ({
       },
     },
   },
+
+  [theme.breakpoints.down('smd')]: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    '.detail-box': {
+      width: '30rem',
+    },
+  },
 }));
 
 const ProductDetail = (props: { product_id: string }) => {
