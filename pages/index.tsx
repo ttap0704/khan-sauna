@@ -21,6 +21,7 @@ const ProductBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   gap: '1rem',
+  paddingTop: '1rem',
 }));
 
 export default function Home() {

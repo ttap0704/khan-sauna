@@ -4,4 +4,5 @@ interface ProductPreview {
   price: number;
   size: string;
   thumbnail: string;
+  images: string[]
 }

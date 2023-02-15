@@ -1,16 +1,21 @@
 import { Box, styled, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 import { ReactNode, use } from 'react';
 
-const LayoutContainer = styled(Box)(({ theme }) => ({}));
+const LayoutContainer = styled(Box)(({ theme }) => ({
+  overflowX: 'hidden',
+  width: '100%',
+}));
 
 const LayoutHeader = styled(Box)(({ theme }) => ({
   width: '100%',
-  height: '3.5rem',
+  height: '4.5rem',
   borderBottom: '1px solid',
   borderColor: theme.palette.gray_4.main,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  backgroundColor: theme.palette.brown.main,
 
   '.header': {
     width: '100%',
@@ -19,6 +24,10 @@ const LayoutHeader = styled(Box)(({ theme }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+
+    '.logo': {
+      cursor: 'pointer',
+    },
   },
 
   ul: {
@@ -31,6 +40,8 @@ const LayoutHeader = styled(Box)(({ theme }) => ({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      color: theme.palette.white.main,
+      fontSize: '1.1rem',
     },
   },
 }));
@@ -46,14 +57,31 @@ const LayoutBody = styled(Box)(({ theme }) => ({
 
 const LayoutFooter = styled(Box)(({ theme }) => ({
   width: '100%',
-  height: '15rem',
-  borderTop: '1px solid',
-  borderColor: theme.palette.gray_4.main,
+  backgroundColor: theme.palette.black.main,
+  '& > div': {
+    width: '100%',
+    maxWidth: '60rem',
+    margin: '0 auto',
+    '.info': {
+      padding: '1rem 0 0.5rem',
 
-  '.info': {
-    p: {
-      fontSize: '0.9rem',
-      display: 'inline-flex',
+      '.title': {
+        fontWeight: 600,
+        color: theme.palette.white.main,
+        fontSize: '1.1rem',
+        marginBottom: '1rem',
+        display: 'block',
+      },
+      '.detail': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.25rem',
+        p: {
+          fontSize: '0.9rem',
+          display: 'inline-flex',
+          color: theme.palette.white.main,
+        },
+      },
     },
   },
 }));
@@ -63,6 +91,7 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
+  const router = useRouter();
   const children = props.children;
 
   const header_list = ['제품보기', '문의하기', '배송 및 설치안내'];
@@ -89,11 +118,17 @@ export default function Layout(props: LayoutProps) {
     },
   ];
 
+  const moveMain = () => {
+    router.push('/');
+  };
+
   return (
     <LayoutContainer>
       <LayoutHeader>
         <Box className='header'>
-          <Box className='logo'>LOGO</Box>
+          <Box className='logo' onClick={moveMain}>
+            LOGO
+          </Box>
           <Box className='menu' component='ul'>
             {header_list.map((item, item_idx) => {
               return (
@@ -107,12 +142,19 @@ export default function Layout(props: LayoutProps) {
       </LayoutHeader>
       <LayoutBody>{children}</LayoutBody>
       <LayoutFooter>
-        <Box className='info'>
-          {business_info.map((item, item_idx) => {
-            return <Typography key={`business_info_${item_idx}`}>{`${item.label} : ${item.value}`}</Typography>;
-          })}
+        <Box>
+          <Box className='info'>
+            <Typography className='title' component='b'>
+              사업자 정보
+            </Typography>
+            <Box className='detail'>
+              {business_info.map((item, item_idx) => {
+                return <Typography key={`business_info_${item_idx}`}>{`${item.label} : ${item.value}`}</Typography>;
+              })}
+            </Box>
+          </Box>
+          <Box className='copy'></Box>
         </Box>
-        <Box className='copy'></Box>
       </LayoutFooter>
     </LayoutContainer>
   );
