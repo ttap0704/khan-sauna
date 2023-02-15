@@ -6,3 +6,10 @@ interface ProductPreview {
   thumbnail: string;
   images: string[]
 }
+
+interface MetaData {
+  title: string;
+  content: string;
+  image: string;
+  description: string;
+}

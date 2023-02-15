@@ -5,7 +5,8 @@
     "thumbnail": "1.jpeg",
     "price": 1000,
     "size": "W1200 * L2190 * H940 mm",
-    "images": ["1.jpeg", "1.jpeg"]
+    "images": ["1.jpeg", "1.jpeg"],
+    "description": "1인용 사우나"
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "thumbnail": "2.jpeg",
     "price": 1000,
     "size": "W1200 * L2190 * H940 mm",
-    "images": []
+    "images": [],
+    "description": "1인용 사우나"
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "thumbnail": "3.jpeg",
     "price": 1000,
     "size": "W1200 * L2190 * H940 mm",
-    "images": []
+    "images": [],
+    "description": "1인용 사우나"
   },
   {
     "id": 4,
@@ -29,6 +32,7 @@
     "thumbnail": "4.jpeg",
     "price": 1000,
     "size": "W1200 * L2190 * H940 mm",
-    "images": []
+    "images": [],
+    "description": "1인용 사우나"
   }
 ]

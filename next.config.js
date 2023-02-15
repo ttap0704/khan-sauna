@@ -2,6 +2,7 @@
 
 const withImages = require('next-images');
 const nextConfig = {
+  trailingSlash: true,
   reactStrictMode: true,
   webpack(config) {
     config.resolve.fallback = {

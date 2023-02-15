@@ -139,12 +139,29 @@ export async function getStaticPaths() {
   };
 }
 
-export const getStaticProps: GetStaticProps<ParsedUrlQuery, ParsedUrlQuery, PreviewData> = async ({ params }) => {
+export const getStaticProps = async ({ params }: any) => {
   const id = params?.id;
 
-  return {
-    props: {
-      product_id: id,
-    },
-  };
+  const current_product = products.find(item => item.id == Number(id));
+  if (current_product) {
+    const meta_props: MetaData = {
+      title: `${current_product.product} | (주)가안`,
+      content: `https://kaansauna.com/products/${id}`,
+      image: `https://kaansauna.com/src/assets/images/product/${id}/${current_product.thumbnail})`,
+      description: current_product.description,
+    };
+
+    return {
+      props: {
+        product_id: id,
+        meta_props,
+      },
+    };
+  } else {
+    return {
+      props: {
+        product_id: id,
+      },
+    };
+  }
 };
