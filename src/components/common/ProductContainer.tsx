@@ -7,7 +7,7 @@ const ProductContainerBox = styled('div')(({ theme }) => ({
   position: 'relative',
   '.product-image': {
     width: '100%',
-    height: '30rem',
+    height: '24.5rem',
     position: 'relatvie',
     overflow: 'hidden',
     backgroundPosition: 'center !important',
@@ -27,7 +27,7 @@ const ProductContainerBox = styled('div')(({ theme }) => ({
     position: 'absolute',
     zIndex: 10,
     width: '100%',
-    height: '30rem',
+    height: '24.5rem',
     top: '0',
     left: '0',
     display: 'flex',
@@ -39,7 +39,7 @@ const ProductContainerBox = styled('div')(({ theme }) => ({
     '.buy-button': {
       width: '10rem',
       height: '3.5rem',
-      fontSize: '1.4rem',
+      fontSize: '1.2rem',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -81,7 +81,9 @@ const ProductContainer = (props: ProductContainerProps) => {
   const [hover, setHover] = useState(false);
 
   const moveDetail = () => {
-    router.push(`/products/${product.id}`);
+    const is_product = process.env.NODE_ENV === 'production';
+    const route_name = is_product ? `/products/${product.id}.html` : `/products/${product.id}`;
+    router.push(route_name);
   };
 
   return (
@@ -95,7 +97,7 @@ const ProductContainer = (props: ProductContainerProps) => {
         </div>
         {hover ? (
           <Box className='hover-container' onClick={moveDetail}>
-            <Box className='buy-button'>BUY</Box>
+            <Box className='buy-button'>VIEW MORE</Box>
           </Box>
         ) : null}
       </div>

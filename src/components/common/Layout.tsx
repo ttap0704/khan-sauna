@@ -19,7 +19,7 @@ const LayoutHeader = styled(Box)(({ theme }) => ({
 
   '.header': {
     width: 'calc(100% - 2rem)',
-    maxWidth: '60rem',
+    maxWidth: '55rem',
     height: '100%',
     display: 'flex',
     alignItems: 'center',
@@ -48,7 +48,7 @@ const LayoutHeader = styled(Box)(({ theme }) => ({
 
 const LayoutBody = styled(Box)(({ theme }) => ({
   width: 'calc(100% - 2rem)',
-  maxWidth: '60rem',
+  maxWidth: '55rem',
   display: 'flex',
   flexDirection: 'column',
   margin: '0 auto',
@@ -60,7 +60,7 @@ const LayoutFooter = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.black.main,
   '& > div': {
     width: 'calc(100% - 2rem)',
-    maxWidth: '60rem',
+    maxWidth: '55rem',
     margin: '0 auto',
     '.info': {
       padding: '1rem 0 0.5rem',
@@ -94,7 +94,7 @@ export default function Layout(props: LayoutProps) {
   const router = useRouter();
   const children = props.children;
 
-  const header_list = ['제품보기', '문의하기', '배송 및 설치안내'];
+  const header_list = ['문의하기', '배송 및 설치안내'];
   const business_info = [
     {
       label: '업체명',

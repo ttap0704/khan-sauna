@@ -58,13 +58,6 @@ const ProductDetailInfo = styled(Box)(({ theme }) => ({
       },
     },
 
-    '.divider': {
-      width: '100%',
-      height: '1px',
-      backgroundColor: theme.palette.gray_4.main,
-      margin: '1rem 0',
-    },
-
     '.additional-info': {
       fontSize: '1rem',
       b: {
@@ -83,6 +76,20 @@ const ProductDetailInfo = styled(Box)(({ theme }) => ({
       width: '30rem',
     },
   },
+}));
+
+const ProductDetailIntro = styled(Box)(({ theme }) => ({
+  width: '100%',
+  img: {
+    width: '100%',
+  },
+}));
+
+const ProductDetailDivider = styled(Box)(({ theme }) => ({
+  width: '100%',
+  height: '1px',
+  backgroundColor: theme.palette.gray_4.main,
+  margin: '1rem 0',
 }));
 
 const ProductDetail = (props: { product_id: string }) => {
@@ -106,20 +113,36 @@ const ProductDetail = (props: { product_id: string }) => {
         <Box className='detail-box'>
           <Typography className='title'>{product.product}</Typography>
           <Typography className='price'>{Number(product.price).toLocaleString('euc-kr')}원</Typography>
-          <Box className='divider' />
+          <ProductDetailDivider />
           <Box className='additional-info'>
             제조사 : <Typography component='b'>(주)가안</Typography>
           </Box>
           <Box className='additional-info'>
             배송정보 : <Typography component='b'>직접배송 | 설치상품</Typography>
           </Box>
-          <Box className='divider' />
+          <ProductDetailDivider />
           <Box className='buttons'>
             <Box>구매 문의하기</Box>
             <Box>배송 및 설치안내</Box>
           </Box>
         </Box>
       </ProductDetailInfo>
+      <ProductDetailDivider />
+      <ProductDetailIntro>
+        <Box component='img' src='/src/assets/images/product_common/001.png' />
+        <Box component='img' src='/src/assets/images/product_common/002.png' />
+        <Box component='img' src='/src/assets/images/product_common/003.png' />
+        <Box component='img' src='/src/assets/images/product_common/004.png' />
+        <Box component='img' src='/src/assets/images/product_common/005.png' />
+        <Box component='img' src='/src/assets/images/product_common/006.png' />
+        <Box component='img' src='/src/assets/images/product_common/007.png' />
+        <Box component='img' src='/src/assets/images/product_common/008.png' />
+        <Box component='img' src='/src/assets/images/product_common/009.png' />
+        <Box component='img' src='/src/assets/images/product_common/010.png' />
+        <Box component='img' src='/src/assets/images/product_common/011.png' />
+        <Box component='img' src='/src/assets/images/product_common/012.png' />
+        <Box component='img' src='/src/assets/images/product_common/013.png' />
+      </ProductDetailIntro>
     </>
   ) : null;
 };
