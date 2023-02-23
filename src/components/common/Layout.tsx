@@ -1,5 +1,5 @@
 import { ModalContext } from '@/src/provider/ModalProvider';
-import { fetchGetApi } from '@/src/utils/api';
+import { fetchGetApi, fetchPostApi } from '@/src/utils/api';
 import validation from '@/src/utils/validation';
 import { Box, Button, styled, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
@@ -201,9 +201,16 @@ export default function Layout(props: LayoutProps) {
     modal_confirm.openModalConfirm('문의를 접수하시겠습니까?', sendEmail);
   };
   const sendEmail = async () => {
-    const test = await fetchGetApi('/api/hello');
-    console.log(test);
-    modal_alert.openModalAlert('문의가 접수되었습니다.\r\n입력하신 전화번호로 연락드리겠습니다.');
+    const email_res = await fetchPostApi('/api/email', {
+      subject: `[(주)가안] 상품문의(${name})`,
+      message: `이름: ${name}<br/>전화번호: ${phone}<br/>내용: ${emailContents}`,
+    });
+    if (email_res.pass) {
+      setName('');
+      setPhone('');
+      setEmailContents('');
+      modal_alert.openModalAlert('문의가 접수되었습니다.\r\n입력하신 전화번호로 연락드리겠습니다.');
+    }
   };
 
   return (
