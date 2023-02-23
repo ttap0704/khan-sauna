@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material';
 import type { AppProps } from 'next/app';
 import '@/src/assets/styles/globals.scss';
 import Head from 'next/head';
+import ModalProvider from '@/src/provider/ModalProvider';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -20,9 +21,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property='og:type' name='type' content='website' />
       </Head>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ModalProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ModalProvider>
       </ThemeProvider>
     </>
   );

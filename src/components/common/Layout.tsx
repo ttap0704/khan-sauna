@@ -1,6 +1,10 @@
-import { Box, styled, Typography } from '@mui/material';
+import { ModalContext } from '@/src/provider/ModalProvider';
+import { fetchGetApi } from '@/src/utils/api';
+import validation from '@/src/utils/validation';
+import { Box, Button, styled, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import { ReactNode, use } from 'react';
+import React, { ReactNode, use, useContext, useState } from 'react';
+import InputOutliened from '../input/InputOutliened';
 
 const LayoutContainer = styled(Box)(({ theme }) => ({
   overflowX: 'hidden',
@@ -55,10 +59,66 @@ const LayoutBody = styled(Box)(({ theme }) => ({
   paddingBottom: '1rem',
 }));
 
+const LayoutEmail = styled(Box)(({ theme }) => ({
+  width: '100%',
+  backgroundColor: theme.palette.gray_6.main,
+  '& > div': {
+    width: 'calc(100% - 2rem)',
+    maxWidth: '55rem',
+    margin: '0 auto',
+    padding: '1rem 0',
+
+    '& > div': {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.5rem',
+    },
+    '.user-info': {
+      display: 'flex',
+      gap: '1rem',
+      '& > div': {
+        display: 'flex',
+        width: '50%',
+      },
+    },
+
+    '.input-box': {
+      height: '3rem',
+      display: 'flex',
+    },
+
+    '.MuiInputBase-root': {
+      width: 'calc(100% - 5rem)',
+      backgroundColor: theme.palette.white.main,
+    },
+
+    '.email-contents': {
+      '.MuiInputBase-root': {
+        width: 'calc(100% - 13rem)',
+        backgroundColor: theme.palette.white.main,
+      },
+
+      button: {
+        marginLeft: '1rem',
+        width: '7rem',
+      },
+    },
+
+    '.title': {
+      fontSize: '1rem',
+      display: 'flex',
+      width: '5rem',
+      height: '100%',
+      alignItems: 'center',
+      fontWeight: '600',
+    },
+  },
+}));
+
 const LayoutFooter = styled(Box)(({ theme }) => ({
   width: '100%',
   backgroundColor: theme.palette.black.main,
-  '& > div': {
+  '& > .info-box': {
     width: 'calc(100% - 2rem)',
     maxWidth: '55rem',
     margin: '0 auto',
@@ -91,8 +151,13 @@ interface LayoutProps {
 }
 
 export default function Layout(props: LayoutProps) {
+  const { modal_confirm, modal_alert } = useContext(ModalContext);
   const router = useRouter();
   const children = props.children;
+
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [emailContents, setEmailContents] = useState('');
 
   const header_list = ['문의하기', '배송 및 설치안내'];
   const business_info = [
@@ -122,6 +187,25 @@ export default function Layout(props: LayoutProps) {
     router.push('/');
   };
 
+  const confirmEmail = () => {
+    if (name.length == 0 || phone.length == 0 || emailContents.length == 0) {
+      modal_alert.openModalAlert('모든 항목을 입력해주세요.');
+      return;
+    }
+
+    if (!validation.phone_no_hypen(phone)) {
+      modal_alert.openModalAlert('올바른 전화번호를 입력해주세요.');
+      return;
+    }
+
+    modal_confirm.openModalConfirm('문의를 접수하시겠습니까?', sendEmail);
+  };
+  const sendEmail = async () => {
+    const test = await fetchGetApi('/api/hello');
+    console.log(test);
+    modal_alert.openModalAlert('문의가 접수되었습니다.\r\n입력하신 전화번호로 연락드리겠습니다.');
+  };
+
   return (
     <LayoutContainer>
       <LayoutHeader>
@@ -141,8 +225,55 @@ export default function Layout(props: LayoutProps) {
         </Box>
       </LayoutHeader>
       <LayoutBody>{children}</LayoutBody>
-      <LayoutFooter>
+      <LayoutEmail>
         <Box>
+          <Box>
+            <Box className='user-info'>
+              <Box className='input-box'>
+                <Typography component='span' className='title'>
+                  성함
+                </Typography>
+                <InputOutliened
+                  value={name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setName(e.target.value);
+                  }}
+                />
+              </Box>
+              <Box className='input-box'>
+                <Typography component='span' className='title'>
+                  전화번호
+                </Typography>
+                <InputOutliened
+                  value={phone}
+                  format='number'
+                  max={11}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    setPhone(e.target.value);
+                  }}
+                />
+              </Box>
+            </Box>
+            <Box className='email-contents input-box'>
+              <Typography component='span' className='title'>
+                문의내용
+              </Typography>
+              <InputOutliened
+                value={emailContents}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                  setEmailContents(e.target.value);
+                }}
+              />
+
+              <Button variant='contained' color='brown' onClick={confirmEmail}>
+                문의하기
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </LayoutEmail>
+      <LayoutFooter>
+        <Box className='info-box'>
           <Box className='info'>
             <Typography className='title' component='b'>
               사업자 정보

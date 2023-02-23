@@ -83,7 +83,7 @@ const ProductContainer = (props: ProductContainerProps) => {
   const moveDetail = () => {
     const is_product = process.env.NODE_ENV === 'production';
     const route_name = is_product ? `/products/${product.id}.html` : `/products/${product.id}`;
-    router.push(route_name);
+    router.push(`/products/${product.id}`);
   };
 
   return (
