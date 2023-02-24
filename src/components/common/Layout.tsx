@@ -201,7 +201,7 @@ export default function Layout(props: LayoutProps) {
     modal_confirm.openModalConfirm('문의를 접수하시겠습니까?', sendEmail);
   };
   const sendEmail = async () => {
-    const email_res = await fetchPostApi('/api/email', {
+    const email_res = await fetchPostApi('https://lwhvubbiya.execute-api.ap-northeast-2.amazonaws.com/sendemail', {
       subject: `[(주)가안] 상품문의(${name})`,
       message: `이름: ${name}<br/>전화번호: ${phone}<br/>내용: ${emailContents}`,
     });
