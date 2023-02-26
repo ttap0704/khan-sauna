@@ -170,7 +170,7 @@ export const getStaticProps = async ({ params }: any) => {
     const meta_props: MetaData = {
       title: `${current_product.product} | (주)가안`,
       content: `https://kaansauna.com/products/${id}`,
-      image: `https://kaansauna.com/src/assets/images/product/${id}/${current_product.thumbnail})`,
+      image: `https://kaansauna.com/src/assets/images/product/${id}/${current_product.thumbnail}`,
       description: current_product.description,
     };
 

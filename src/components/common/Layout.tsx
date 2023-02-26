@@ -232,7 +232,7 @@ export default function Layout(props: LayoutProps) {
         </Box>
       </LayoutHeader>
       <LayoutBody>{children}</LayoutBody>
-      <LayoutEmail>
+      {/* <LayoutEmail>
         <Box>
           <Box>
             <Box className='user-info'>
@@ -261,7 +261,7 @@ export default function Layout(props: LayoutProps) {
                 />
               </Box>
             </Box>
-            {/* <Box className='email-contents input-box'>
+            <Box className='email-contents input-box'>
               <Typography component='span' className='title'>
                 문의내용
               </Typography>
@@ -275,10 +275,10 @@ export default function Layout(props: LayoutProps) {
               <Button variant='contained' color='brown' onClick={confirmEmail}>
                 문의하기
               </Button>
-            </Box> */}
+            </Box>
           </Box>
         </Box>
-      </LayoutEmail>
+      </LayoutEmail> */}
       <LayoutFooter>
         <Box className='info-box'>
           <Box className='info'>
