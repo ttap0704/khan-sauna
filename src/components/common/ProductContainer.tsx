@@ -82,8 +82,11 @@ const ProductContainer = (props: ProductContainerProps) => {
 
   const moveDetail = () => {
     const is_product = process.env.NODE_ENV === 'production';
-    const route_name = is_product ? `/products/${product.id}.html` : `/products/${product.id}`;
-    router.push(`/products/${product.id}`);
+    if (is_product) {
+      window.open(`/products/${product.id}/index.html`, '_self');
+    } else {
+      router.push(`/products/${product.id}`);
+    }
   };
 
   return (
